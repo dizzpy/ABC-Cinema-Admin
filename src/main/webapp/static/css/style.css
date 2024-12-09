@@ -1,0 +1,15 @@
+@layer base {
+    html {
+        font-family: Inter, system-ui, sans-serif;
+    }
+}
+
+@layer components {
+    .custom-primary-button {
+        @apply px-4 py-2 bg-custom-red text-custom-white font-normal rounded-[8px] transition-colors duration-200;
+    }
+
+    .custom-secondary-button {
+        @apply px-4 py-2 bg-custom-white text-custom-black border border-custom-black hover:bg-gray-50 font-normal rounded-lg transition-colors duration-200;
+    }
+}
