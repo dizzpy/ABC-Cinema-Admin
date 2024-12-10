@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
 
-    <title>User Management</title>
+    <title>Ticket Management</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -76,9 +76,10 @@
     <main class="flex-1 p-6">
         <!-- Header -->
         <header class="flex flex-wrap justify-between items-center mb-6">
-            <h2 class="text-2xl font-semibold">User Management</h2>
+            <h2 class="text-2xl font-semibold">Ticket Management</h2>
         </header>
     </main>
 </div>
+
 </body>
 </html>
