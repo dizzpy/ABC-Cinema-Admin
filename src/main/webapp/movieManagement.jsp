@@ -79,7 +79,7 @@
         <header class="flex flex-wrap justify-between items-center mb-6">
             <h2 class="text-2xl font-semibold">Movie Management</h2>
             <form action="addMoviePage.jsp" method="get" style="display: inline;">
-                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 mt-4 md:mt-0">
+                <button type="submit" class="px-4 py-2 bg-custom-red text-custom-white font-normal rounded-[8px] transition-colors duration-200">
                     + Add New Movie
                 </button>
             </form>
