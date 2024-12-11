@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.net.*, java.io.*, org.json.*, java.util.*" %>
 <%
     String movieTitle = request.getParameter("movieTitle");
@@ -75,7 +75,10 @@
 
                 JSONObject movieDetails = new JSONObject(apiResponse);
                 runtime = movieDetails.optInt("runtime", 0) > 0 ? movieDetails.optInt("runtime") + " minutes" : "Not Available";
-                imdbRating = movieDetails.has("vote_average") && !movieDetails.isNull("vote_average") ? String.valueOf(movieDetails.getDouble("vote_average")) : "Not Available";
+                imdbRating = movieDetails.has("vote_average") && !movieDetails.isNull("vote_average")
+                        ? String.format("%.1f", movieDetails.getFloat("vote_average"))
+                        : "Not Available";
+
 
                 // Fetch parental guidance information
                 String releaseDatesUrl = TMDB_BASE_URL + "/movie/" + movieId + "/release_dates?api_key=" + TMDB_API_KEY;
@@ -108,10 +111,6 @@
         }
     }
 %>
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -161,10 +160,12 @@
             <div class="flex">
                 <input id="movie-title" type="text" name="movieTitle" placeholder="Venom: Let There Be Carnage"
                        class="bg-custom-gray w-full p-3 text-custom-white rounded-lg focus:ring-custom-red focus:border-custom-red mr-10 value="<%= movieTitle != null ? movieTitle : "" %>">
-                <button type="submit" class="px-4 py-2 bg-custom-red text-custom-white font-normal rounded-[8px] transition-colors duration-200">
+                <button type="submit"
+                        class="px-4 py-2 bg-custom-red text-custom-white font-normal rounded-[8px] transition-colors duration-200">
                     Search
                 </button>
-                <button type="reset" onclick="window.location.href='addMoviePage.jsp';" class="px-4 py-2 bg-custom-white text-custom-black font-normal rounded-[8px] transition-colors duration-200 ml-5">
+                <button type="reset" onclick="window.location.href='addMoviePage.jsp';"
+                        class="px-4 py-2 bg-custom-white text-custom-black font-normal rounded-[8px] transition-colors duration-200 ml-5">
                     Discard
                 </button>
             </div>
@@ -196,7 +197,8 @@
                     <div class="flex flex-row items-center">
                         <img src="${pageContext.request.contextPath}/static/assets/icons/clock-white.svg"
                              alt="Run Time" class="h-5 w-5">
-                        <p class="text-sm md:text-base text-custom-textgray ml-1 font-normal">Runtime: <%= runtime %></p>
+                        <p class="text-sm md:text-base text-custom-textgray ml-1 font-normal"><%= runtime %>
+                        </p>
                     </div>
 
                     <!-- Separator -->
@@ -204,7 +206,8 @@
 
                     <!-- Category -->
                     <div class="flex flex-row items-center">
-                        <p class="text-sm md:text-base text-custom-textgray font-normal"> <%= parentalGuidance %></p>
+                        <p class="text-sm md:text-base text-custom-textgray font-normal"><%= parentalGuidance %>
+                        </p>
                     </div>
 
                     <!-- Separator -->
@@ -214,17 +217,16 @@
                     <div class="flex flex-row items-center space-x-2">
                         <img src="${pageContext.request.contextPath}/static/assets/icons/imdb-logo.png"
                              alt="IMDb Logo" class="h-5 w-auto">
-                        <p class="text-sm md:text-base text-custom-textgray font-normal"> <%= imdbRating %></p>
+                        <p class="text-sm md:text-base text-custom-textgray font-normal"><%= imdbRating %>
+                        </p>
                     </div>
                 </div>
 
-                <p class="text-xl text-custom-white mt-4"><%= movieData.getString("overview") %></p>
+                <%--  <p class="text-xl text-custom-white mt-4"></p>  --%>
 
                 <!-- Movie Description -->
                 <p class="text-sm md:text-base text-custom-textgray mt-4">
-                    Eddie Brock attempts to reignite his career by
-                    interviewing serial killer Cletus Kasady, who becomes the host of the symbiote Carnage and
-                    escapes prison after a failed execution.
+                    <%= movieData.getString("overview") %>
                 </p>
 
                 <p class="text-xl text-custom-white mt-5">Category</p>
@@ -244,12 +246,10 @@
                     </a>
 
 
-
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <!-- Movie Category -->
@@ -258,7 +258,8 @@
             <input type="hidden" name="title" value="<%= movieData.getString("title") %>">
             <input type="hidden" name="description" value="<%= movieData.getString("overview") %>">
             <input type="hidden" name="genres" value="<%= movieGenres %>">
-            <input type="hidden" name="poster_url" value="https://image.tmdb.org/t/p/w500<%= movieData.getString("poster_path") %>">
+            <input type="hidden" name="poster_url"
+                   value="https://image.tmdb.org/t/p/w500<%= movieData.getString("poster_path") %>">
             <input type="hidden" name="imdb_rating" value="<%= imdbRating %>">
             <input type="hidden" name="runtime" value="<%= runtime %>">
             <input type="hidden" name="parental_guidance" value="<%= parentalGuidance %>">
@@ -267,7 +268,7 @@
             <label for="category" class="block text-base font-medium mb-2">
                 Select Movie Category <span class="text-custom-red">*</span>
             </label>
-            <select name="category" id="category" required   style="background-color: #282727;"
+            <select name="category" id="category" required style="background-color: #282727;"
                     class="w-5/12 p-3  text-custom-white rounded-lg focus:ring-custom-red focus:border-custom-red">
                 <option>Screening Now Home</option>
                 <option>Coming Soon Home</option>
@@ -277,7 +278,8 @@
             <!-- Publish Button -->
             <div class="flex justify-end w-full max-w-5xl">
 
-                <button type="submit" class="bg-custom-red text-custom-white px-6 py-3 rounded-lg  flex items-center gap-2">
+                <button type="submit"
+                        class="bg-custom-red text-custom-white px-6 py-3 rounded-lg  flex items-center gap-2">
                     Publish Movie
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                          class="w-5 h-5">
@@ -290,8 +292,6 @@
         </form>
 
     </div>
-
-
 
 
     <% } %>
