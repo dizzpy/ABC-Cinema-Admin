@@ -27,9 +27,9 @@
     <form action="LoginServlet" method="post">
         <input
                 type="text"
-                id="email"
-                name="email"
-                placeholder="sampleemail@abc.com"
+                id="username"
+                name="username"
+                placeholder="username"
                 class="w-full bg-custom-black text-custom-white placeholder:text-custom-textgray border border-custom-textgray focus:outline-none focus:ring-1 focus:ring-custom-gray rounded-md px-5 py-3"
         />
         <input
