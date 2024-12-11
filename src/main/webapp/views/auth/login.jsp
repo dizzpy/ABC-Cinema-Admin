@@ -19,10 +19,35 @@
     <script src="${pageContext.request.contextPath}/static/js/tailwind-config.js"></script>
     <link href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
+<body class="bg-custom-black min-h-screen flex flex-col items-center justify-center">
+<div class="w-[350px] text-center">
+    <p class="text-[20px] text-custom-white mb-6">Login as Admin</p>
 
-<body class="bg-custom-black min-h-screen flex flex-col">
+    <%--  Email Inputbox  --%>
+    <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="sampleemail@abc.com"
+            class="w-full bg-custom-black text-custom-white placeholder:text-custom-textgray border border-custom-textgray focus:outline-none focus:ring-1 focus:ring-custom-gray rounded-md px-5 py-3"
+    />
 
-<!-- Main content wrapper -->
-<p class="text-center text-white mt-[250px]">Admin Login</p>
+    <%--  Password Inputbox  --%>
+    <input
+            type="password"
+            id="password"
+            name="email"
+            placeholder="***********"
+            class="mt-5 w-full bg-custom-black text-custom-white placeholder:text-custom-textgray border border-custom-textgray focus:outline-none focus:ring-1 focus:ring-custom-gray rounded-md px-5 py-3"
+    />
+
+
+    <%--  Create Account Button  --%>
+    <button class="w-full bg-custom-red text-custom-white rounded-md px-5 py-3 mt-10">
+        Login to Account
+    </button>
+
+</div>
 </body>
+
 </html>
