@@ -8,7 +8,7 @@
 
   <!-- Welcome File -->
   <welcome-file-list>
-    <welcome-file>movieManagement.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
 
   <!-- Static Resource Mapping -->
@@ -16,4 +16,7 @@
     <servlet-name>default</servlet-name>
     <url-pattern>/static/*</url-pattern>
   </servlet-mapping>
+
+
+
 </web-app>

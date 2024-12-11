@@ -65,7 +65,7 @@
 
                 <!-- Logout Link -->
                 <li class="mb-4">
-                    <a href="#" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                    <a href="auth/log" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
                         Logout
                     </a>
                 </li>
