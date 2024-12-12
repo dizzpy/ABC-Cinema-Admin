@@ -8,7 +8,7 @@
 
   <!-- Welcome File -->
   <welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>userManagement.jsp</welcome-file>
   </welcome-file-list>
 
   <!-- Static Resource Mapping -->
