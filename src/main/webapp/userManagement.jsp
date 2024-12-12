@@ -34,6 +34,21 @@
                 <li class="mb-4">
                     <a href="userManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">User Management</a>
                 </li>
+
+                <!-- Ticket Management Link -->
+                <li class="mb-4">
+                    <a href="ticketManagement.jsp"
+                       class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                        Ticket Management
+                    </a>
+                </li>
+
+                <!-- Logout Link -->
+                <li class="mb-4">
+                    <a href="LogoutServlet" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                        Logout
+                    </a>
+                </li>
             </ul>
         </nav>
     </aside>
