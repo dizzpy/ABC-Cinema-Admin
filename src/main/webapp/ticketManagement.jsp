@@ -1,3 +1,11 @@
+<%
+    HttpSession session1 = request.getSession(false);
+    if (session1 == null || session1.getAttribute("adminUsername") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>

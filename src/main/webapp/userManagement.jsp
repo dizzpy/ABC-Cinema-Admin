@@ -2,6 +2,15 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.DriverManager" %>
+
+<%
+    HttpSession session1 = request.getSession(false);
+    if (session1 == null || session1.getAttribute("adminUsername") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>

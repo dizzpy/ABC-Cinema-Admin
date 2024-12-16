@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.net.*, java.io.*, org.json.*, java.util.*" %>
 <%
+    HttpSession session1 = request.getSession(false);
+    if (session1 == null || session1.getAttribute("adminUsername") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+<%
     String movieTitle = request.getParameter("movieTitle");
     String TMDB_API_KEY = "0453add907cb3ae092654a9edc87e895";
     String TMDB_BASE_URL = "https://api.themoviedb.org/3";
