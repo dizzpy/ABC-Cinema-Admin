@@ -2,7 +2,6 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.DriverManager" %>
-
 <%
     HttpSession session1 = request.getSession(false);
     if (session1 == null || session1.getAttribute("adminUsername") == null) {
@@ -10,7 +9,6 @@
         return;
     }
 %>
-
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 <head>
@@ -38,21 +36,25 @@
         <nav>
             <ul>
                 <li class="mb-4">
-                    <a href="movieManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">Movie Management</a>
+                    <a href="movieManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                        Movie Management
+                    </a>
                 </li>
                 <li class="mb-4">
-                    <a href="userManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">User Management</a>
+                    <a href="userManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                        User Management
+                    </a>
                 </li>
-
-                <!-- Ticket Management Link -->
                 <li class="mb-4">
-                    <a href="ticketManagement.jsp"
-                       class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                    <a href="ticketManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
                         Ticket Management
                     </a>
                 </li>
-
-                <!-- Logout Link -->
+                <li class="mb-4">
+                    <a href="reviewManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                        Review Management
+                    </a>
+                </li>
                 <li class="mb-4">
                     <a href="LogoutServlet" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
                         Logout
@@ -78,15 +80,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <% Connection con = null;
-                   Statement stmt = null;
-                   ResultSet rs = null;
-                   try {
-                       Class.forName("com.mysql.cj.jdbc.Driver");
-                       con = DriverManager.getConnection("jdbc:mysql://mysql-abccinema.alwaysdata.net/abccinema_host", "abccinema", "EzATWsB6Zyfpz5");
-                       stmt = con.createStatement();
-                       rs = stmt.executeQuery("SELECT * FROM user_auth");
-                       while (rs.next()) {
+                <% Connection con = null;
+                    Statement stmt = null;
+                    ResultSet rs = null;
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://mysql-abccinema.alwaysdata.net/abccinema_host", "abccinema", "EzATWsB6Zyfpz5");
+                        stmt = con.createStatement();
+                        rs = stmt.executeQuery("SELECT * FROM user_auth");
+                        while (rs.next()) {
                 %>
                 <tr class="hover:bg-custom-gray/50">
                     <td class="border border-[#444] p-2 text-center"><%= rs.getInt("user_id") %></td>
@@ -96,16 +98,16 @@
                         <button onclick="confirmDelete(<%= rs.getInt("user_id") %>)" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Delete</button>
                     </td>
                 </tr>
-                    <%
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            if (rs != null) rs.close();
-                            if (stmt != null) stmt.close();
-                            if (con != null) con.close();
+                <%
                         }
-                    %>
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (rs != null) rs.close();
+                        if (stmt != null) stmt.close();
+                        if (con != null) con.close();
+                    }
+                %>
                 </tbody>
             </table>
             <div class="flex space-x-4">
