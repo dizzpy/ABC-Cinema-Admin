@@ -65,18 +65,19 @@
     </aside>
     <main class="flex-1 p-6">
         <header class="flex flex-wrap justify-between items-center mb-6">
-            <h2 class="text-2xl font-semibold">User Management</h2>
+            <h2 class="text-2xl font-semibold">Review Management</h2>
         </header>
 
         <section class="user-details mb-8">
-            <h3 class="text-xl font-semibold mb-4">User Details</h3>
+            <h3 class="text-xl font-semibold mb-4">Review Details</h3>
             <table id="userTable" class="w-full border-collapse mb-5">
                 <thead>
                 <tr class="bg-custom-gray">
-                    <th class="border border-[#444] p-2 text-center ">User ID</th>
-                    <th class="border border-[#444] p-2 text-center">Full Name</th>
-                    <th class="border border-[#444] p-2 text-center">Email</th>
-                    <th class="border border-[#444] p-2 text-center">Actions</th>
+                    <th class="border border-[#444] p-1 text-center ">Review ID</th>
+                    <th class="border border-[#444] p-1 text-center ">Reviewer Name</th>
+                    <th class="border border-[#444] p-1 text-center">Rating</th>
+                    <th class="border border-[#444] p-1 text-center">Description</th>
+                    <th class="border border-[#444] p-1 text-center">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -87,15 +88,16 @@
                         Class.forName("com.mysql.cj.jdbc.Driver");
                         con = DriverManager.getConnection("jdbc:mysql://mysql-abccinema.alwaysdata.net/abccinema_host", "abccinema", "EzATWsB6Zyfpz5");
                         stmt = con.createStatement();
-                        rs = stmt.executeQuery("SELECT * FROM user_auth");
+                        rs = stmt.executeQuery("SELECT * FROM reviews");
                         while (rs.next()) {
                 %>
                 <tr class="hover:bg-custom-gray/50">
-                    <td class="border border-[#444] p-2 text-center"><%= rs.getInt("user_id") %></td>
-                    <td class="border border-[#444] p-2 text-center"><%= rs.getString("full_name") %></td>
-                    <td class="border border-[#444] p-2 text-center"><%= rs.getString("email") %></td>
-                    <td class="border border-[#444] p-2 text-center">
-                        <button onclick="confirmDelete(<%= rs.getInt("user_id") %>)" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Delete</button>
+                    <td class="border border-[#444] p-1 text-center"><%= rs.getInt("review_id") %></td>
+                    <td class="border border-[#444] p-1 text-center"><%= rs.getString("reviewer_name") %></td>
+                    <td class="border border-[#444] p-1 text-center"><%= rs.getDouble("rating") %></td>
+                    <td class="border border-[#444] p-1 text-center"><%= rs.getString("review_description") %></td>
+                    <td class="border border-[#444] p-1 text-center">
+                        <button onclick="confirmDeleteReview(<%= rs.getInt("review_id") %>)" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Delete</button>
                     </td>
                 </tr>
                 <%
@@ -123,5 +125,6 @@
 <script src="${pageContext.request.contextPath}/js/user-management.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/user-management.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/review-management.js"></script>
 </body>
 </html>

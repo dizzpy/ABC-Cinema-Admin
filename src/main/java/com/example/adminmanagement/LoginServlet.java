@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Invalid Username or Password!');");
-                out.println("location='admin-login.jsp';");
+                out.println("location='login.jsp';");
                 out.println("</script>");
             }
         } catch (Exception e) {

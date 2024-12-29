@@ -50,6 +50,11 @@
                     </a>
                 </li>
                 <li class="mb-4">
+                    <a href="reviewManagement.jsp" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
+                        Review Management
+                    </a>
+                </li>
+                <li class="mb-4">
                     <a href="LogoutServlet" class="text-custom-white bg-custom-black hover:text-custom-red px-4 py-2 rounded block">
                         Logout
                     </a>
@@ -87,7 +92,7 @@
                 <h3 class="text-sm font-bold mb-1 text-center"><%= title %></h3>
                 <p class="text-xs text-custom-textgray mb-2 text-center"><%= rs.getString("status") %> (<%= rs.getString("category") %>)</p>
                 <div class="flex justify-between">
-                    <form action="addMoviePage.jsp" method="get">
+                    <form action="editMovieStatus.jsp" method="get">
                         <input type="hidden" name="movieId" value="<%= movieId %>">
                         <button type="submit" class="bg-custom-black text-custom-white px-6 py-2 text-sm rounded">Edit</button>
                     </form>
